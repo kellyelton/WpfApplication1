@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace WpfApplication1
@@ -24,7 +25,10 @@ namespace WpfApplication1
 
         public void Execute(object parameter)
         {
-            this.ViewModel.AddMusician(parameter as Musician);                        
+            var win = (FrameworkElement)parameter;
+            var musician = (Musician)win.DataContext;
+            this.ViewModel.AddMusician(musician);
+            win.DataContext = new Musician();
         }
     }
 }
