@@ -1,0 +1,62 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="WPF Solution" Height="551.4" Width="338.2">
+    <Window.Resources>
+        <local:AddViewModel x:Key="vm"/>
+        <local:BackgroundConverter x:Key="converter"/>
+        <local:Musician x:Key="musician"/>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <local:Musician/>
+    </Window.DataContext>
+
+    <Grid x:Name="grid" Background="{Binding IsActive, Converter={StaticResource converter}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="1" Grid.Row="1" Margin="10" FontSize="16" Text="First"/>
+        <TextBox x:Name ="textBoxOfFirstName" Text="{Binding Path=FirstName, Mode=TwoWay}" 
+                 Grid.Column="2" Grid.Row="1" Margin="10" FontSize="16" Width="125"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="2" Margin="10" FontSize="16" Text="Last"/>
+        <TextBox x:Name ="textBoxOfLastName" Text="{Binding Path=LastName, Mode=TwoWay}" Grid.Column="2" Grid.Row="2" Margin="10" FontSize="16" Width="125"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="3" Margin="10" FontSize="16" Text="Full" />
+        <TextBox x:Name ="textBoxOfFullName" Text="{Binding Path=FullName, Mode=OneWay}" Grid.Column="2" Grid.Row="3" Margin="10" FontSize="16" Width="125" />
+
+        <ListBox x:Name="listOfNames" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" FontSize="16" SelectionChanged="listOfNames_SelectionChanged" Grid.RowSpan="2" Height="325" DataContext="{Binding Source={StaticResource vm}}"
+                 ItemsSource="{Binding}"/>
+        <Button x:Name="addButton" Grid.Column="3" Grid.Row="1" Margin="10" FontSize="16" Width="70" Content="Add" Command="{Binding AddCommand, Source={StaticResource vm}}" CommandParameter="{Binding}"/>
+        <CheckBox 
+            x:Name="isActive" Grid.Column="3" Grid.Row="3" 
+                  Width=" 80" Height="20" 
+                  HorizontalAlignment="Right" VerticalAlignment="Center" 
+                  FontSize =" 16" Content=""
+                  IsChecked="{Binding Path=IsActive, Mode =TwoWay}" Command="{Binding ClickCommand}">
+        </CheckBox>
+
+    </Grid>
+</Window>
