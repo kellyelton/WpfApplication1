@@ -28,5 +28,12 @@ namespace WpfApplication1
         {
             textBoxOfFullName.Text = listOfNames.SelectedItem.ToString();
         }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.textBoxOfFirstName.Clear();
+            this.textBoxOfLastName.Clear();
+            this.textBoxOfFullName.Clear();
+        }
     }
 }

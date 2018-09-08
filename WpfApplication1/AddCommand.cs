@@ -24,7 +24,7 @@ namespace WpfApplication1
 
         public void Execute(object parameter)
         {
-            this.ViewModel.AddMusician(parameter as Musician);
+            this.ViewModel.AddMusician(parameter as Musician);                        
         }
     }
 }

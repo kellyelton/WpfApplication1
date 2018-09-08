@@ -20,7 +20,7 @@ namespace WpfApplication1
         }
         public void AddMusician(Musician musician)
         {
-            Add(musician);
+            Add(musician);            
         }
     }
 }

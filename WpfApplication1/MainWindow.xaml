@@ -42,14 +42,21 @@
                  Grid.Column="2" Grid.Row="1" Margin="10" FontSize="16" Width="125"/>
 
         <TextBlock Grid.Column="1" Grid.Row="2" Margin="10" FontSize="16" Text="Last"/>
-        <TextBox x:Name ="textBoxOfLastName" Text="{Binding Path=LastName, Mode=TwoWay}" Grid.Column="2" Grid.Row="2" Margin="10" FontSize="16" Width="125"/>
+        <TextBox x:Name ="textBoxOfLastName"  Grid.Column="2" Grid.Row="2" Margin="10" FontSize="16" Width="125" 
+                 Text="{Binding Path=LastName, Mode=TwoWay}"/>
 
         <TextBlock Grid.Column="1" Grid.Row="3" Margin="10" FontSize="16" Text="Full" />
-        <TextBox x:Name ="textBoxOfFullName" Text="{Binding Path=FullName, Mode=OneWay}" Grid.Column="2" Grid.Row="3" Margin="10" FontSize="16" Width="125" />
+        <TextBox x:Name ="textBoxOfFullName" Grid.Column="2" Grid.Row="3" Margin="10" FontSize="16" Width="125" 
+                 Text="{Binding Path=FullName, Mode=OneWay}"/>
 
-        <ListBox x:Name="listOfNames" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" FontSize="16" SelectionChanged="listOfNames_SelectionChanged" Grid.RowSpan="2" Height="325" DataContext="{Binding Source={StaticResource vm}}"
+        <ListBox x:Name="listOfNames" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="6" FontSize="16" Grid.RowSpan="2" Height="325"
+                 SelectionChanged="listOfNames_SelectionChanged"
+                 DataContext="{Binding Source={StaticResource vm}}"
                  ItemsSource="{Binding}"/>
-        <Button x:Name="addButton" Grid.Column="3" Grid.Row="1" Margin="10" FontSize="16" Width="70" Content="Add" Command="{Binding AddCommand, Source={StaticResource vm}}" CommandParameter="{Binding}"/>
+
+        <Button x:Name="addButton" Grid.Column="3" Grid.Row="1" Margin="10" FontSize="16" Width="70" Content="Add" 
+                Command="{Binding AddCommand, Source={StaticResource vm}}" CommandParameter="{Binding}" Click="addButton_Click"/>
+
         <CheckBox 
             x:Name="isActive" Grid.Column="3" Grid.Row="3" 
                   Width=" 80" Height="20" 
