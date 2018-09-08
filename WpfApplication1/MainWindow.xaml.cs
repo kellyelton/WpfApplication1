@@ -31,9 +31,9 @@ namespace WpfApplication1
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            this.textBoxOfFirstName.Clear();
-            this.textBoxOfLastName.Clear();
-            this.textBoxOfFullName.Clear();
+            //this.textBoxOfFirstName.Clear();
+            //this.textBoxOfLastName.Clear();
+            //this.textBoxOfFullName.Clear();
         }
     }
 }

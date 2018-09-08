@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace WpfApplication1
 {
-    public class Musician : INotifyPropertyChanged
+    public class Musician : INotifyPropertyChanged, ICloneable
     {
         private bool isActive;
         private string firstName;
@@ -49,20 +49,27 @@ namespace WpfApplication1
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public object Clone() {
+            return new Musician {
+                FirstName = this.FirstName,
+                LastName = this.LastName,
+                IsActive = this.IsActive
+            };
+        }
+
+        public void Clear() {
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            IsActive = false;
+        }
+
         public void OnPropertyChanged(String propertyName)
         {
-            if(propertyName != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-                
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         public override string ToString()
         {
             return FullName;
         }
-
-
-
     }
 }

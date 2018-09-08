@@ -24,7 +24,13 @@ namespace WpfApplication1
 
         public void Execute(object parameter)
         {
-            this.ViewModel.AddMusician(parameter as Musician);                        
+            var editableMusician = (Musician)parameter;
+
+            var clonedMusician = (Musician)editableMusician.Clone();
+
+            editableMusician.Clear();
+
+            this.ViewModel.AddMusician(clonedMusician);
         }
     }
 }
